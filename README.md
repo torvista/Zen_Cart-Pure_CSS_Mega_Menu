@@ -5,6 +5,7 @@ GitHub: https://github.com/torvista/Zen_Cart-Pure_CSS_Mega_Menu
 
 Changelog
 26/03/2024 torvista
+Bigfix: misdeclared and missing constants in headermenu.php
 
 15/11/2012 v1.0 Picaflor-Azul Plugins
 https://www.zen-cart.com/downloads.php?do=file&id=1554

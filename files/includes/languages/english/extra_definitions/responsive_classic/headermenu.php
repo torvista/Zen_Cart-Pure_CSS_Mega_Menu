@@ -50,6 +50,7 @@ define('TITLE_EZ_PAGES', 'Useful Links');
 define('TITLE_GENERAL', 'General Info');
 define('TITLE_CUSTOMERS', 'Customers');
 define('TITLE_NEWSLETTERS', 'Newsletters');
+define('HEADER_TITLE_CREATE_ACCOUNT', 'Create Account');
 
 /*bof connect with us*/
 define('TITLE_CONNECT', 'Connect');
