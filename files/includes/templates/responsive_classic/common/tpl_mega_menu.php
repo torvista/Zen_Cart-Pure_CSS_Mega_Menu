@@ -1,4 +1,6 @@
-<?php
+<?php //Pure CSS Mega Menu
+
+declare(strict_types=1);
 //
 // +----------------------------------------------------------------------+
 // |zen-cart Open Source E-commerce                                       |
@@ -17,7 +19,7 @@
 // | to obtain it through the world-wide-web, please send a note to       |
 // | license@zen-cart.com so we can mail you a copy immediately.          |
 // +----------------------------------------------------------------------+
-// $Id: tpl_drop_menu.php  2024-03-26 torvista
+// $Id: tpl_drop_menu.php 2024-03-26 torvista
 //
 ?>
 
@@ -50,7 +52,7 @@
 
  // load the UL-generator class and produce the menu list dynamically from there
  require_once (DIR_WS_CLASSES . 'categories_ul_generator.php');
- $zen_CategoriesUL = new zen_categories_ul_generator;
+ $zen_CategoriesUL = new zen_categories_ul_generator();
  $menulist = $zen_CategoriesUL->buildTree(true);
  $menulist = str_replace('"level4"','"level5"',$menulist);
  $menulist = str_replace('"level3"','"level4"',$menulist);
@@ -65,16 +67,13 @@
                </div>
         </li><!-- eof categories  -->
 
-
      <li class="manufacturers-li"><a href="<?php echo zen_href_link(FILENAME_DEFAULT); ?>" class="drop"><?php echo HEADER_TITLE_MANUFACTURERS; ?></a><!--bof shop by brand   -->
             <div class="dropdown_1column">
                 <div class="col_1 firstcolumn">
-
               <ul >
                <?php
 
   $show_manufacturers= true;
-
 // for large lists of manufacturers uncomment this section
 /*
   if (($_GET['main_page']==FILENAME_DEFAULT and ($_GET['cPath'] == '' or $_GET['cPath'] == 0)) or  ($request_type == 'SSL')) {
@@ -84,22 +83,22 @@
   }
 */
 
-// Set to true to display manufacturers images in place of names
+// Set to true to display manufacturers' images in place of names
 define('DISPLAY_MANUFACTURERS_IMAGES',false);
 
 if ($show_manufacturers) {
 
 // only check products if requested - this may slow down the processing of the manufacturers sidebox
   if (PRODUCTS_MANUFACTURERS_STATUS == '1') {
-    $manufacturer_sidebox_query = "select distinct m.manufacturers_id, m.manufacturers_name, m.manufacturers_image
-                            from " . TABLE_MANUFACTURERS . " m
-                            left join " . TABLE_PRODUCTS . " p on m.manufacturers_id = p.manufacturers_id
+    $manufacturer_sidebox_query = 'select distinct m.manufacturers_id, m.manufacturers_name, m.manufacturers_image
+                            from ' . TABLE_MANUFACTURERS . ' m
+                            left join ' . TABLE_PRODUCTS . ' p on m.manufacturers_id = p.manufacturers_id
                             where m.manufacturers_id = p.manufacturers_id and p.products_status= 1
-                            order by manufacturers_name";
+                            order by manufacturers_name';
   } else {
-    $manufacturer_sidebox_query = "select m.manufacturers_id, m.manufacturers_name, m.manufacturers_image
-                            from " . TABLE_MANUFACTURERS . " m
-                            order by manufacturers_name";
+    $manufacturer_sidebox_query = 'select m.manufacturers_id, m.manufacturers_name, m.manufacturers_image
+                            from ' . TABLE_MANUFACTURERS . ' m
+                            order by manufacturers_name';
   }
 
   $manufacturer_sidebox = $db->Execute($manufacturer_sidebox_query);
@@ -108,7 +107,7 @@ if ($show_manufacturers) {
     $number_of_rows = $manufacturer_sidebox->RecordCount()+1;
 
 // Display a list
-    $manufacturer_sidebox_array = array();
+    $manufacturer_sidebox_array = [];
 //		kuroi: commented out to avoid starting list with text scrolling list entries such as "reset" and "please select"
 //    if (!isset($_GET['manufacturers_id']) || $_GET['manufacturers_id'] == '' ) {
 //      $manufacturer_sidebox_array[] = array('id' => '', 'text' => PULL_DOWN_ALL);
@@ -120,18 +119,19 @@ if ($show_manufacturers) {
       $manufacturer_sidebox_name = ((strlen($manufacturer_sidebox->fields['manufacturers_name']) > MAX_DISPLAY_MANUFACTURER_NAME_LEN) ? substr($manufacturer_sidebox->fields['manufacturers_name'], 0, MAX_DISPLAY_MANUFACTURER_NAME_LEN) . '..' : $manufacturer_sidebox->fields['manufacturers_name']);
 	  $manufacturer_sidebox_image = $manufacturer_sidebox->fields['manufacturers_image'];
       $manufacturer_sidebox_array[] =
-		array('id' => $manufacturer_sidebox->fields['manufacturers_id'],
+		[
+            'id' => $manufacturer_sidebox->fields['manufacturers_id'],
 			  'text' => DISPLAY_MANUFACTURERS_IMAGES ?
 				zen_image(DIR_WS_IMAGES . $manufacturer_sidebox_image, $manufacturer_sidebox_name) :
-				$manufacturer_sidebox_name);
+				$manufacturer_sidebox_name
+        ];
       $manufacturer_sidebox->MoveNext();
     }
 
   }
 } // $show_manufacturers
 				for ($i=0;$i<sizeof($manufacturer_sidebox_array);$i++) {
-      $content = '';
-	  $content .= '<li ><a class="hide" href="' . zen_href_link(FILENAME_DEFAULT, 'manufacturers_id=' . $manufacturer_sidebox_array[$i]['id']) . '">';
+                    $content = '<li ><a class="hide" href="' . zen_href_link(FILENAME_DEFAULT, 'manufacturers_id=' . $manufacturer_sidebox_array[$i]['id']) . '">';
       $content .= $manufacturer_sidebox_array[$i]['text'];
       $content .= '</a></li>' . "\n";
       echo $content;
@@ -156,8 +156,6 @@ if ($show_manufacturers) {
              	</div>
             </div>
         </li><!-- eof about us -->
-
-
 
           <li class="information-li"><a href="<?php echo zen_href_link(FILENAME_DEFAULT); ?>" class="drop"><?php echo HEADER_TITLE_INFORMATION; ?></a><!-- bof information -->
 

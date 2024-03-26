@@ -1,4 +1,6 @@
-<?php
+<?php //Pure CSS Mega Menu
+
+declare(strict_types=1);
 /**
  * ezpages sidebox - used to display links to EZ-Pages content
  *
@@ -8,19 +10,17 @@
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
  * @version $Id: ezpages.php 2682 2005-12-25 21:10:03Z wilt $
  */
- $ezpages_header_status = $db->Execute("select layout_box_name from " . TABLE_LAYOUT_BOXES . " where layout_box_status_single = 1 and layout_template ='" . $template_dir . "' and layout_box_name='ezpages_drop_menu.php'");
+ $ezpages_header_status = $db->Execute('select layout_box_name from ' . TABLE_LAYOUT_BOXES . " where layout_box_status_single = 1 and layout_template ='" . $template_dir . "' and layout_box_name='ezpages_drop_menu.php'");
 
   if ($ezpages_header_status->RecordCount() != 0) {
     $show_ezpages_header= true;
   }
-  
-  if ($show_ezpages_header == true) {
 
-
+  if (isset($show_ezpages_header) && $show_ezpages_header) {
     if (isset($var_linksList)) {
       unset($var_linksList);
     }
-    $page_query = $db->Execute("select * from " . TABLE_EZPAGES . " where status_header = 1 order by header_sort_order, pages_title");
+    $page_query = $db->Execute('select * from ' . TABLE_EZPAGES . ' where status_header = 1 order by header_sort_order, pages_title');
     if ($page_query->RecordCount()>0) {
       $title =  BOX_HEADING_EZPAGES;
       $box_id =  'ezpages';
@@ -29,7 +29,7 @@
         $rows++;
         $page_query_list_sidebox[$rows]['id'] = $page_query->fields['pages_id'];
         $page_query_list_sidebox[$rows]['name'] = $page_query->fields['pages_title'];
-        $page_query_list_sidebox[$rows]['altURL']  = "";
+        $page_query_list_sidebox[$rows]['altURL']  = '';
         switch (true) {
           // external link new window or same window
           case ($page_query->fields['alt_url_external'] != ''):
@@ -37,13 +37,13 @@
           break;
           // internal link new window
           case ($page_query->fields['alt_url'] != '' and $page_query->fields['page_open_new_window'] == '1'):
-          $page_query_list_sidebox[$rows]['altURL']  = (substr($page_query->fields['alt_url'],0,4) == 'http') ?
+          $page_query_list_sidebox[$rows]['altURL']  = (str_starts_with($page_query->fields['alt_url'], 'http')) ?
           $page_query->fields['alt_url'] :
           ($page_query->fields['alt_url']=='' ? '' : zen_href_link($page_query->fields['alt_url'], 'target="_blank', ($page_query->fields['page_is_ssl']=='0' ? 'NONSSL' : 'SSL'), true, true, true));
           break;
           // internal link same window
           case ($page_query->fields['alt_url'] != '' and $page_query->fields['page_open_new_window'] == '0'):
-          $page_query_list_sidebox[$rows]['altURL']  = (substr($page_query->fields['alt_url'],0,4) == 'http') ?
+          $page_query_list_sidebox[$rows]['altURL']  = (str_starts_with($page_query->fields['alt_url'], 'http')) ?
           $page_query->fields['alt_url'] :
           ($page_query->fields['alt_url']=='' ? '' : zen_href_link($page_query->fields['alt_url'], '', ($page_query->fields['page_is_ssl']=='0' ? 'NONSSL' : 'SSL'), true, true, true));
           break;
@@ -65,4 +65,3 @@
       require($template->get_template_dir('tpl_box_header.php',DIR_WS_TEMPLATE, $current_page_base,'common'). '/tpl_box_header.php');
     }
   } // test for display
-?>
