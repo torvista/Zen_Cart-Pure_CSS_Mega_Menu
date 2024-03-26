@@ -17,16 +17,14 @@
 // | to obtain it through the world-wide-web, please send a note to       |
 // | license@zen-cart.com so we can mail you a copy immediately.          |
 // +----------------------------------------------------------------------+
-// $Id: tpl_drop_menu.php  2005/06/15 15:39:05 DrByte Exp $
+// $Id: tpl_drop_menu.php  2024-03-26 torvista
 //
-
 ?>
-
 
 <div id="mega-wrapper"><!-- bof mega-wrapper -->
 
     <ul class="mega-menu menu_red"><!-- bof mega-menu -->
-       
+
        <li class="quicklinks-li"><a href="<?php echo zen_href_link(FILENAME_DEFAULT); ?>" class="drop"><?php echo HEADER_TITLE_QUICK_LINKS; ?></a><!-- bof quick links  -->
              <div class="dropdown_1column">
                 <div class="col_1 firstcolumn">
@@ -36,15 +34,15 @@
                        <li><a href="<?php echo zen_href_link(FILENAME_FEATURED_PRODUCTS); ?>"><?php echo TABLE_HEADING_FEATURED_PRODUCTS; ?></a></li>
                        <li><a href="<?php echo zen_href_link(FILENAME_PRODUCTS_ALL); ?>"><?php echo HEADER_TITLE_ALL_PRODUCTS; ?></a></li>
                        <li><a href="<?php echo zen_href_link(FILENAME_SPECIALS); ?>"><?php echo HEADER_TITLE_SPECIALS; ?></a></li>
-                       <li><a href="<?php echo zen_href_link(FILENAME_ADVANCED_SEARCH); ?>"><?php echo HEADER_TITLE_SEARCH; ?></a></li>                        
-                   </ul>   
+                       <li><a href="<?php echo zen_href_link(FILENAME_ADVANCED_SEARCH); ?>"><?php echo HEADER_TITLE_SEARCH; ?></a></li>
+                   </ul>
                 </div>
                </div>
         </li><!-- eof quick links -->
 
 
         <li class="categories-li"><a href="<?php echo zen_href_link(FILENAME_DEFAULT); ?>" class="drop"><?php echo HEADER_TITLE_CATEGORIES; ?></a><!-- bof cateories    -->
-     
+
             <div class="dropdown_1column">
                 <div class="col_1 firstcolumn">
                    <div class="levels">
@@ -61,12 +59,12 @@
  $menulist = str_replace('<li class="submenu">','<li class="submenu">',$menulist);
  $menulist = str_replace("</li>\n</ul>\n</li>\n</ul>\n","</li>\n</ul>\n",$menulist);
  echo $menulist;
-?>                        
-                   </div>   
+?>
+                   </div>
                 </div>
                </div>
         </li><!-- eof categories  -->
-        
+
 
      <li class="manufacturers-li"><a href="<?php echo zen_href_link(FILENAME_DEFAULT); ?>" class="drop"><?php echo HEADER_TITLE_MANUFACTURERS; ?></a><!--bof shop by brand   -->
             <div class="dropdown_1column">
@@ -74,7 +72,7 @@
 
               <ul >
                <?php
-		
+
   $show_manufacturers= true;
 
 // for large lists of manufacturers uncomment this section
@@ -128,7 +126,7 @@ if ($show_manufacturers) {
 				$manufacturer_sidebox_name);
       $manufacturer_sidebox->MoveNext();
     }
-      
+
   }
 } // $show_manufacturers
 				for ($i=0;$i<sizeof($manufacturer_sidebox_array);$i++) {
@@ -143,28 +141,28 @@ if ($show_manufacturers) {
 		</div>
             </div>
         </li><!-- eof shop by brand    -->
-        
+
 	<li class="aboutus-li"><a href="<?php echo zen_href_link(FILENAME_ABOUT_US); ?>" class="drop"><?php echo HEADER_TITLE_ABOUT_US; ?></a><!-- bof about us -->
-                
+
             <div class="dropdown_aboutus">
-                    
+
                 <div class="col_aboutus">
                     <h2><?php echo TITLE_ABOUT_US;?></h2>
                 </div>
- 
+
 		<div class="col_cs">
-                     <p class="mega-about"><?php echo TEXT_ABOUT_US;?></p>             
-                     	<img src="<?php  echo $template->get_template_dir('',DIR_WS_TEMPLATE, $current_page_base,'images').'/'.ABOUT_US_IMAGE ?>"   class="imgshadow_light aboutus-image" alt="about us"  />    
+                     <p class="mega-about"><?php echo TEXT_ABOUT_US;?></p>
+                     	<img src="<?php  echo $template->get_template_dir('',DIR_WS_TEMPLATE, $current_page_base,'images').'/'.ABOUT_US_IMAGE ?>"   class="imgshadow_light aboutus-image" alt="about us"  />
              	</div>
             </div>
         </li><!-- eof about us -->
 
-        
+
 
           <li class="information-li"><a href="<?php echo zen_href_link(FILENAME_DEFAULT); ?>" class="drop"><?php echo HEADER_TITLE_INFORMATION; ?></a><!-- bof information -->
- 
+
 	    <div class="dropdown_info">
-        
+
 		<div class="col_1">
             	    <h3><?php echo TITLE_GENERAL; ?></h3>
                     <ul>
@@ -181,13 +179,13 @@ if ($show_manufacturers) {
                		<?php if (SHOW_NEWSLETTER_UNSUBSCRIBE_LINK == 'true') { ?>
                 	<li><a href="<?php echo zen_href_link(FILENAME_UNSUBSCRIBE, '', 'NONSSL'); ?>"><?php echo BOX_INFORMATION_UNSUBSCRIBE; ?></a></li>
                 	<?php } ?>
-                     </ul>   
+                     </ul>
                  </div>
-    
+
 		<div class="col_1">
                      <h3><?php echo TITLE_CUSTOMERS; ?></h3>
                      <ul>
-			<?php if ($_SESSION['customer_id']) { ?>
+			<?php if (!empty($_SESSION['customer_id'])) { ?>
                 	<li><a href="<?php echo zen_href_link(FILENAME_ACCOUNT, '', 'SSL'); ?>"><?php echo HEADER_TITLE_MY_ACCOUNT; ?></a></li>
                 	<li><a href="<?php echo zen_href_link(FILENAME_LOGOFF, '', 'SSL'); ?>"><?php echo HEADER_TITLE_LOGOFF; ?></a></li>
                 	<li><a href="<?php echo zen_href_link(FILENAME_ACCOUNT_NEWSLETTERS, '', 'SSL'); ?>"><?php echo TITLE_NEWSLETTERS; ?></a></li>
@@ -205,20 +203,20 @@ if ($show_manufacturers) {
                         <?php if (DEFINE_CONDITIONS_STATUS <= 1) { ?>
                 	<li><a href="<?php echo zen_href_link(FILENAME_CONDITIONS); ?>"><?php echo BOX_INFORMATION_CONDITIONS; ?></a></li>
                         <?php } ?>
-                     </ul>   
+                     </ul>
                  </div>
 
             	 <div class="col_1">
                       <h3><?php echo TITLE_EZ_PAGES; ?></h3>
-		      <ul> 
+		      <ul>
 		      <?php require(DIR_WS_MODULES . 'sideboxes/' . $template_dir . '/' . 'ezpages_drop_menu.php'); ?>
 		      </ul>
             	 </div>
            </div>
 
   	</li><!-- eof information -->
- 
-    
+
+
         <li class="connect-li"><a href="<?php echo zen_href_link(FILENAME_ABOUT_US); ?>" class="drop"><?php echo TITLE_CONNECT;?></a><!-- bof connect -->
                 <div class="dropdown_1column">
                 <div class="col_1 firstcolumn">
@@ -228,34 +226,34 @@ if ($show_manufacturers) {
                        <li class="hyoutube"><a href="<?php echo YOUTUBE; ?>" target="_blank"><img src="<?php  echo $template->get_template_dir('',DIR_WS_TEMPLATE, $current_page_base,'images').'/'.YOUTUBE_ICON_SM ?>"  alt="youtube link" class="h-sm" /><?php echo YOUTUBE_TEXT; ?></a></li>
                        <li class="hpinterest"><a href="<?php echo PINTEREST; ?>" target="_blank"><img src="<?php  echo $template->get_template_dir('',DIR_WS_TEMPLATE, $current_page_base,'images').'/'.PINTEREST_ICON_SM ?>"  alt="pinterest link" class="h-sm" /><?php echo PINTEREST_TEXT; ?></a></li>
                        <li class="hgoogle"><a href="<?php echo GOOGLE; ?>" target="_blank"><img src="<?php  echo $template->get_template_dir('',DIR_WS_TEMPLATE, $current_page_base,'images').'/'.GOOGLE_ICON_SM ?>"  alt="google link" class="h-sm" /><?php echo GOOGLE_TEXT; ?></a></li>
-                       <li class="hblog"><a href="<?php echo BLOG; ?>" target="_blank"><img src="<?php  echo $template->get_template_dir('',DIR_WS_TEMPLATE, $current_page_base,'images').'/'.BLOG_ICON_SM ?>"  alt="blog link" class="h-sm" /><?php echo BLOG_TEXT; ?></a></li>                        
-                   </ul>   
+                       <li class="hblog"><a href="<?php echo BLOG; ?>" target="_blank"><img src="<?php  echo $template->get_template_dir('',DIR_WS_TEMPLATE, $current_page_base,'images').'/'.BLOG_ICON_SM ?>"  alt="blog link" class="h-sm" /><?php echo BLOG_TEXT; ?></a></li>
+                   </ul>
                 </div>
                </div>
-              
+
         </li><!-- eof connect-->
-    
+
 	<li class="customerservice-li"><a href="<?php echo zen_href_link(FILENAME_SHIPPING); ?>" class="drop"><?php echo HEADER_TITLE_CUSTOMER_SERVICE; ?></a><!-- bof customer service -->
-        
+
             <div class="dropdown_customer_service align_right">
-           
+
                 <div class="col_cs">
                     <h2><?php echo TITLE_SHIPPING;?></h2>
                 </div>
 
                 <div class="col_cs">
-      		     <p><?php echo TEXT_SHIPPING_INFO;?></p>             
+      		     <p><?php echo TEXT_SHIPPING_INFO;?></p>
                 </div>
-       
+
                 <div class="col_cs">
                       <h2><?php echo TITLE_CONFIDENCE;?></h2>
 		</div>
 
 		<div class="col_cs">
-                      <img src="<?php  echo $template->get_template_dir('',DIR_WS_TEMPLATE, $current_page_base,'images').'/'.PAYMENT_ICON ?>"   alt="payments we accept" class="payments-icon" /> 
-		      <p class="mega-confidence"><?php echo TEXT_CONFIDENCE;?></p>             
+                      <img src="<?php  echo $template->get_template_dir('',DIR_WS_TEMPLATE, $current_page_base,'images').'/'.PAYMENT_ICON ?>"   alt="payments we accept" class="payments-icon" />
+		      <p class="mega-confidence"><?php echo TEXT_CONFIDENCE;?></p>
                 </div>
-      
+
             </div><!-- eof customer service -->
 
 	 </li>
