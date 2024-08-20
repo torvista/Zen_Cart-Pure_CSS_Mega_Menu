@@ -1,6 +1,6 @@
-<?php //Pure CSS Mega Menu
+<?php
+// Pure CSS Mega Menu
 
-declare(strict_types=1);
 /**
  * Common Template - tpl_header.php
  *

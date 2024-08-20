@@ -1,4 +1,5 @@
-<?php //Pure CSS Mega Menu
+<?php
+//Pure CSS Mega Menu
 
 declare(strict_types=1);
 /**

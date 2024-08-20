@@ -17,13 +17,13 @@
     background: -moz-linear-gradient(top, #ccc, #383838);
     background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ccc), to(#383838));
     border: 1px solid #444;
-    -moz-box-shadow: inset 0px 0px 1px #edf9ff;
-    -webkit-box-shadow: inset 0px 0px 1px #edf9ff;
-    box-shadow: inset 0px 0px 1px #edf9ff;
+    -moz-box-shadow: inset 0 0 1px #edf9ff;
+    -webkit-box-shadow: inset 0 0 1px #edf9ff;
+    box-shadow: inset 0 0 1px #edf9ff;
     list-style: none;
-    margin: 30px auto 0px auto;
+    margin: 30px auto 0 auto;
     height: 40px;
-    padding: 0px 20px 0px 20px;
+    padding: 0 20px 0 20px;
 }
 
 .mega-menu li {
@@ -43,10 +43,10 @@
     background: #efefef;
     border: 1px solid #efefef;
     margin-right: 18px;
-    -moz-border-radius: 5px 5px 0px 0px;
-    -webkit-border-radius: 5px 5px 0px 0px;
+    -moz-border-radius: 5px 5px 0 0;
+    -webkit-border-radius: 5px 5px 0 0;
     -khtml-border-radius: 5px 5px 0px 0px;
-    border-radius: 5px 5px 0px 0px;
+    border-radius: 5px 5px 0 0;
 }
 
 .mega-menu li a {
@@ -95,13 +95,13 @@
     margin: 4px auto;
     left: -999em;
     position: absolute;
-    border: 0px solid #494949;
+    border: 0 solid #494949;
     padding: 10px;
     text-align: left;
-    -moz-border-radius: 0px 5px 5px 5px;
-    -webkit-border-radius: 0px 5px 5px 5px;
+    -moz-border-radius: 0 5px 5px 5px;
+    -webkit-border-radius: 0 5px 5px 5px;
     -khtml-border-radius: 0px 5px 5px 5px;
-    border-radius: 0px 5px 5px 5px;
+    border-radius: 0 5px 5px 5px;
     background: #efefef;
     background: -moz-linear-gradient(top, #efefef, #bbb);
     background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#efefef), to(#bbb));
@@ -135,9 +135,9 @@
 
 /* bof drop down on mouse hover right aligned */
 .mega-menu li .align_right {
-    -moz-border-radius: 5px 0px 5px 5px;
-    -webkit-border-radius: 5px 0px 5px 5px;
-    border-radius: 5px 0px 5px 5px;
+    -moz-border-radius: 5px 0 5px 5px;
+    -webkit-border-radius: 5px 0 5px 5px;
+    border-radius: 5px 0 5px 5px;
 }
 
 .mega-menu li:hover .align_right {
@@ -204,8 +204,7 @@
 .mega-menu p {
     font-size: 12px;
     line-height: 18px;
-    margin: 0;
-    margin-bottom: 10px;
+    margin: 0 0 10px;
     color: #444;
 }
 
@@ -238,7 +237,7 @@
 /* bof images */
 .mega-menu .imgshadow_light {
     padding: 4px;
-    border: 0px solid #000;
+    border: 0 solid #000;
     margin-top: 5px;
     margin-left: 20px;
 }
@@ -302,12 +301,12 @@
 
 .mega-menu .levels li ul { /* second-level lists*/
     position: absolute;
-    border: 0px solid #444;
+    border: 0 solid #444;
     background: #efefef;
     background: -moz-linear-gradient(top, #efefef, #bbb);
     background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#efefef), to(#bbb));
     top: -23px;
-    margin: 15px 0px 0px 4px;
+    margin: 15px 0 0 4px;
     padding: 6px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;

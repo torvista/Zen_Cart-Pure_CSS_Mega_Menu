@@ -1,6 +1,6 @@
-<?php //Pure CSS Mega Menu
+<?php
+// Pure CSS Mega Menu
 
-declare(strict_types=1);
 /**
  * ezpages sidebox - used to display links to EZ-Pages content
  *
